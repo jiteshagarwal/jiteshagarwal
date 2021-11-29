@@ -1,5 +1,5 @@
 ### Hi there 👋👋
-👀 Hi, I’m @jiteshagarwal. I’m a Digital Science professional and I am here to learn, share and grow.
+👀 Hi, I’m @jiteshagarwal. I’m a Digital Transfromation professional and I am here to learn, share and grow.
 <!--
 **jiteshagarwal/jiteshagarwal** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
 
