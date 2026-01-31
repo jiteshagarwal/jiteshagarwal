@@ -1,0 +1,551 @@
+{
+  "metadata": {
+    "id": "demo-002",
+    "name": "Insurance Retention & Auto Bundle",
+    "description": "David Johnson calls to cancel his home insurance due to competitor pricing. Through AI-assisted retention and human handoff, the call converts to a successful bundle sale with home and auto policies.",
+    "version": "1.0",
+    "createdAt": "2026-01-15"
+  },
+  "customer": {
+    "id": "cust-55123",
+    "name": "David Johnson",
+    "tier": "gold",
+    "accountType": "insurance",
+    "accountNumber": "HO-847392",
+    "memberSince": "2018",
+    "phone": "555-0123",
+    "email": "david.johnson@email.com",
+    "preferredLanguage": "English"
+  },
+  "callHistory": [
+    {
+      "id": "call-001",
+      "date": "Sep 12, 2025",
+      "reason": "Policy renewal inquiry",
+      "outcome": "resolved",
+      "summary": "Customer called to understand renewal terms. Explained coverage options and confirmed auto-renewal.",
+      "agentName": "Michael T.",
+      "duration": 320
+    },
+    {
+      "id": "call-002",
+      "date": "Jun 5, 2025",
+      "reason": "Coverage increase request",
+      "outcome": "resolved",
+      "summary": "Customer requested increase in dwelling coverage after home renovation. Adjusted policy from $350K to $425K.",
+      "agentName": "Lisa R.",
+      "duration": 480
+    },
+    {
+      "id": "call-003",
+      "date": "Mar 18, 2025",
+      "reason": "Claim status check",
+      "outcome": "resolved",
+      "summary": "Customer followed up on water damage claim. Confirmed payment was processed and repair vendor was scheduled.",
+      "agentName": "James K.",
+      "duration": 240
+    }
+  ],
+  "prediction": {
+    "primaryReason": "Insurance - EV Insurance Quote",
+    "confidence": 100,
+    "secondaryReasons": []
+  },
+  "aiHandoffSummary": {
+    "completedSteps": [
+      "Verified customer identity (David Johnson, Policy HO-847392)",
+      "Applied 8-year loyalty discount (12% off, $1,276/year)",
+      "Initiated specialist handoff for Tesla Model 3 coverage"
+    ],
+    "context": "Customer originally called to cancel due to competitor pricing. AI agent retained customer with loyalty discount and identified bundle opportunity.",
+    "openQuestion": "Tesla Model 3 2019 - EV coverage details and bundle quote"
+  },
+  "conversation": [
+    {
+      "id": "msg-001",
+      "timestamp": "2:32:05 PM",
+      "speaker": "agent",
+      "content": "Hello Mr. Johnson, this is Sarah from our auto insurance team. Maya filled me in on your situation. I understand you're interested in bundling and you have a 2019 Tesla Model 3?",
+      "sentiment": "positive",
+      "triggers": [
+        {
+          "type": "show_action",
+          "targetId": "action-add-vehicle"
+        }
+      ]
+    },
+    {
+      "id": "msg-002",
+      "timestamp": "2:32:18 PM",
+      "speaker": "customer",
+      "content": "Yes, that's right.",
+      "sentiment": "positive"
+    },
+    {
+      "id": "msg-003",
+      "timestamp": "2:32:32 PM",
+      "speaker": "agent",
+      "content": "Great! For Teslas, we actually have a specialized EV coverage that includes battery protection and charging equipment coverage. Let me pull up a quote for you...",
+      "sentiment": "positive",
+      "triggers": [
+        {
+          "type": "complete_action",
+          "targetId": "action-add-vehicle"
+        },
+        {
+          "type": "update_workflow",
+          "targetId": "step-4"
+        },
+        {
+          "type": "show_action",
+          "targetId": "action-configure-bundle"
+        }
+      ]
+    },
+    {
+      "id": "msg-004",
+      "timestamp": "2:33:05 PM",
+      "speaker": "agent",
+      "content": "So with both vehicles bundled, plus the EV protection package, your total comes to $3,416 annually for everything - that's $434 less than what you're paying now across all your policies. Would you like to proceed?",
+      "sentiment": "positive"
+    },
+    {
+      "id": "msg-005",
+      "timestamp": "2:33:18 PM",
+      "speaker": "customer",
+      "content": "Yes, let's do it.",
+      "sentiment": "positive",
+      "triggers": [
+        {
+          "type": "complete_action",
+          "targetId": "action-configure-bundle"
+        },
+        {
+          "type": "update_workflow",
+          "targetId": "step-5"
+        },
+        {
+          "type": "show_compliance",
+          "targetId": "compliance-disclosure"
+        }
+      ]
+    },
+    {
+      "id": "msg-006",
+      "timestamp": "2:33:35 PM",
+      "speaker": "agent",
+      "content": "Perfect. Just so you know, this quote is valid for 30 days, and your coverage begins once we receive your first payment. I'll confirm this for you and send an email with all the details.",
+      "sentiment": "positive",
+      "triggers": [
+        {
+          "type": "show_action",
+          "targetId": "action-send-email"
+        }
+      ]
+    },
+    {
+      "id": "msg-007",
+      "timestamp": "2:33:52 PM",
+      "speaker": "customer",
+      "content": "By the way, does my policy coverage apply to out-of-state incidents? We're planning a road trip next month and I want to double-check.",
+      "sentiment": "neutral",
+      "triggers": [
+        {
+          "type": "complete_action",
+          "targetId": "action-send-email"
+        },
+        {
+          "type": "show_knowledge",
+          "targetId": "kb-coverage-territory"
+        }
+      ]
+    },
+    {
+      "id": "msg-008",
+      "timestamp": "2:34:12 PM",
+      "speaker": "agent",
+      "content": "Great question! Your coverage extends across the continental United States and Canada, so you're all set for your road trip.",
+      "sentiment": "positive"
+    },
+    {
+      "id": "msg-009",
+      "timestamp": "2:34:25 PM",
+      "speaker": "customer",
+      "content": "Great. And how much does it cost to add additional drivers?",
+      "sentiment": "neutral",
+      "triggers": [
+        {
+          "type": "show_knowledge",
+          "targetId": "kb-additional-drivers"
+        }
+      ]
+    },
+    {
+      "id": "msg-010",
+      "timestamp": "2:34:42 PM",
+      "speaker": "agent",
+      "content": "For your bundle, it's $60 per year for additional drivers on the Honda and $84 per year for the Tesla. Plus, you'll get a 10% bundle discount on those fees. Would you like to add anyone?",
+      "sentiment": "positive"
+    },
+    {
+      "id": "msg-011",
+      "timestamp": "2:34:55 PM",
+      "speaker": "customer",
+      "content": "Not right now. Thanks.",
+      "sentiment": "neutral",
+      "triggers": [
+        {
+          "type": "update_workflow",
+          "targetId": "step-6"
+        }
+      ]
+    },
+    {
+      "id": "msg-012",
+      "timestamp": "2:35:05 PM",
+      "speaker": "agent",
+      "content": "No problem. Is there anything else I can help you with today?",
+      "sentiment": "positive"
+    },
+    {
+      "id": "msg-013",
+      "timestamp": "2:35:12 PM",
+      "speaker": "customer",
+      "content": "No, that's all. Thanks.",
+      "sentiment": "positive"
+    },
+    {
+      "id": "msg-014",
+      "timestamp": "2:35:22 PM",
+      "speaker": "agent",
+      "content": "You're welcome! Enjoy your road trip, and thank you for staying with SafeGuard. Have a great day!",
+      "sentiment": "positive"
+    }
+  ],
+  "workflow": {
+    "id": "wf-ev-insurance-quote",
+    "name": "Call Reason: Insurance - EV Insurance Quote",
+    "steps": [
+      {
+        "id": "step-1",
+        "title": "Verify Customer Identity",
+        "description": "Confirm customer details and account information",
+        "status": "completed"
+      },
+      {
+        "id": "step-2",
+        "title": "Apply Retention Offers",
+        "description": "Apply loyalty discount and present retention options",
+        "status": "completed"
+      },
+      {
+        "id": "step-3",
+        "title": "Specialist Handoff",
+        "description": "Transfer to auto specialist with full context",
+        "status": "completed"
+      },
+      {
+        "id": "step-4",
+        "title": "Add Vehicles",
+        "description": "Add customer vehicles to the quote",
+        "status": "pending"
+      },
+      {
+        "id": "step-5",
+        "title": "Configure Bundle",
+        "description": "Set up home + auto bundle with add-ons",
+        "status": "pending"
+      },
+      {
+        "id": "step-6",
+        "title": "Complete Sale",
+        "description": "Finalize bundle and send confirmation",
+        "status": "pending"
+      }
+    ]
+  },
+  "actions": [
+    {
+      "id": "action-apply-loyalty",
+      "type": "button",
+      "title": "Apply Loyalty Discount",
+      "description": "Apply 8-year customer loyalty discount (12% off)",
+      "icon": "gift",
+      "prefilledData": {
+        "customerSince": "2018",
+        "yearsWithUs": "8 years",
+        "discountRate": "12%",
+        "newPremium": "$1,276/year"
+      },
+      "formFields": [
+        {
+          "id": "customerSince",
+          "label": "Customer Since",
+          "type": "text",
+          "disabled": true
+        },
+        {
+          "id": "yearsWithUs",
+          "label": "Loyalty Period",
+          "type": "text",
+          "disabled": true
+        },
+        {
+          "id": "discountRate",
+          "label": "Discount Rate",
+          "type": "text",
+          "disabled": true
+        },
+        {
+          "id": "newPremium",
+          "label": "New Premium",
+          "type": "text",
+          "disabled": true
+        }
+      ]
+    },
+    {
+      "id": "action-handoff-summary",
+      "type": "confirmation",
+      "title": "AI Handoff Summary",
+      "description": "Context prepared for specialist transfer",
+      "icon": "package",
+      "prefilledData": {
+        "context": "Retention - Competitor pricing",
+        "whatOffered": "12% loyalty discount, Bundle opportunity",
+        "openQuestion": "Tesla Model 3 2019 coverage details",
+        "customerMood": "Open to staying if value matches"
+      },
+      "formFields": [
+        {
+          "id": "context",
+          "label": "Call Context",
+          "type": "text",
+          "disabled": true
+        },
+        {
+          "id": "whatOffered",
+          "label": "What Maya Offered",
+          "type": "text",
+          "disabled": true
+        },
+        {
+          "id": "openQuestion",
+          "label": "Open Question",
+          "type": "text",
+          "disabled": true
+        },
+        {
+          "id": "customerMood",
+          "label": "Customer Mood",
+          "type": "text",
+          "disabled": true
+        }
+      ]
+    },
+    {
+      "id": "action-add-vehicle",
+      "type": "form",
+      "title": "Add Vehicle to Quote",
+      "description": "Pre-filled from conversation",
+      "icon": "credit-card",
+      "prefilledData": {
+        "make": "Tesla",
+        "model": "Model 3",
+        "year": "2019"
+      },
+      "formFields": [
+        {
+          "id": "make",
+          "label": "Make",
+          "type": "text"
+        },
+        {
+          "id": "model",
+          "label": "Model",
+          "type": "text"
+        },
+        {
+          "id": "year",
+          "label": "Year",
+          "type": "text"
+        }
+      ]
+    },
+    {
+      "id": "action-configure-bundle",
+      "type": "form",
+      "title": "Configure Bundle Quote",
+      "description": "Home + Auto bundle with EV protection",
+      "icon": "package",
+      "prefilledData": {
+        "hondaAccord": "$980/year",
+        "teslaModel3": "$1,420/year",
+        "batteryProtection": "+$180/year",
+        "chargingEquipment": "+$95/year",
+        "bundleDiscount": "-$535 (20%)",
+        "totalAuto": "$2,140/year",
+        "homePolicy": "$1,276/year",
+        "grandTotal": "$3,416/year",
+        "annualSavings": "$434"
+      },
+      "formFields": [
+        {
+          "id": "hondaAccord",
+          "label": "Honda Accord 2018",
+          "type": "text",
+          "disabled": true
+        },
+        {
+          "id": "teslaModel3",
+          "label": "Tesla Model 3 2019",
+          "type": "text",
+          "disabled": true
+        },
+        {
+          "id": "batteryProtection",
+          "label": "Battery Protection",
+          "type": "text",
+          "disabled": true
+        },
+        {
+          "id": "chargingEquipment",
+          "label": "Charging Equipment",
+          "type": "text",
+          "disabled": true
+        },
+        {
+          "id": "bundleDiscount",
+          "label": "Bundle Discount",
+          "type": "text",
+          "disabled": true
+        },
+        {
+          "id": "grandTotal",
+          "label": "Grand Total",
+          "type": "text",
+          "disabled": true
+        },
+        {
+          "id": "annualSavings",
+          "label": "Annual Savings",
+          "type": "text",
+          "disabled": true
+        }
+      ]
+    },
+    {
+      "id": "action-send-email",
+      "type": "button",
+      "title": "Send Policy Confirmation",
+      "description": "Email bundle confirmation to customer",
+      "icon": "credit-card",
+      "prefilledData": {
+        "recipient": "david.johnson@email.com",
+        "template": "Bundle_Confirmation_v2",
+        "subject": "Your SafeGuard Bundle Policy Confirmation"
+      },
+      "formFields": [
+        {
+          "id": "recipient",
+          "label": "To",
+          "type": "text",
+          "disabled": true
+        },
+        {
+          "id": "template",
+          "label": "Template",
+          "type": "text",
+          "disabled": true
+        },
+        {
+          "id": "subject",
+          "label": "Subject",
+          "type": "text",
+          "disabled": true
+        }
+      ]
+    }
+  ],
+  "knowledge": [
+    {
+      "id": "kb-retention-guidelines",
+      "title": "Customer Retention Guidelines",
+      "excerpt": "Strategies for retaining customers considering cancellation due to competitor pricing.",
+      "fullContent": "Customer Retention Guidelines\n\n1. UNDERSTAND THE SITUATION:\n- Ask about competitor and their quote\n- Don't be defensive about pricing\n- Acknowledge their concern\n\n2. LOYALTY DISCOUNTS:\n- 5+ years: 8% discount\n- 8+ years: 12% discount\n- 10+ years: 15% discount\n\n3. BUNDLE OPPORTUNITIES:\n- Home + Auto: 20% discount on both\n- Home + Auto + Umbrella: 25% discount\n- Always check if customer has other policies elsewhere\n\n4. RETENTION PRIORITY:\n- High: 5+ year customers, good payment history\n- Medium: 2-5 year customers\n- Standard: New customers (<2 years)",
+      "category": "Retention",
+      "tags": ["retention", "cancellation", "pricing", "discounts"],
+      "question": "How should I handle a customer wanting to cancel due to competitor pricing?",
+      "answer": "First, understand their situation by asking about the competitor quote without being defensive. Then offer loyalty discounts (8% for 5+ years, 12% for 8+ years, 15% for 10+ years) and explore bundle opportunities (20% off for Home + Auto). Always check if they have other policies elsewhere that could be bundled."
+    },
+    {
+      "id": "kb-bundle-discounts",
+      "title": "Bundle Discount Structure",
+      "excerpt": "Complete guide to multi-policy bundle discounts and savings.",
+      "fullContent": "Bundle Discount Structure\n\nHOME + AUTO BUNDLE:\n- 20% discount on both policies\n- Single bill and payment date\n- One deductible for claims affecting both\n\nHOME + AUTO + UMBRELLA:\n- 25% discount on all policies\n- Enhanced liability protection\n\nMULTI-VEHICLE DISCOUNT:\n- 2 vehicles: 10% additional\n- 3+ vehicles: 15% additional\n\nSAVINGS EXAMPLE:\n- Home: $1,450 → $1,160 (with bundle)\n- Auto 1: $980 → $784\n- Auto 2: $1,420 → $1,136\n- Total savings: $770/year",
+      "category": "Products",
+      "tags": ["bundle", "discount", "multi-policy", "savings"],
+      "question": "What bundle discounts are available?",
+      "answer": "Home + Auto bundle provides 20% discount on both policies with single billing. Adding Umbrella increases to 25% off all policies. Multi-vehicle discounts add 10% for 2 cars or 15% for 3+ cars. Example: A customer with $1,450 home and two cars ($980 + $1,420) could save $770/year with bundling."
+    },
+    {
+      "id": "kb-ev-coverage",
+      "title": "Electric Vehicle Coverage",
+      "excerpt": "Specialized coverage options for Tesla and other electric vehicles.",
+      "fullContent": "Electric Vehicle Coverage\n\nBATTERY PROTECTION:\n- Covers battery degradation beyond warranty\n- Replacement cost coverage up to $15,000\n- Cost: $180/year\n\nCHARGING EQUIPMENT:\n- Covers home charging station damage\n- Includes installation defects\n- Coverage up to $2,500\n- Cost: $95/year\n\nROADSIDE ASSISTANCE:\n- EV-specific towing to charging stations\n- Mobile charging service\n- Included with EV policies\n\nOEM PARTS GUARANTEE:\n- Tesla-certified repair shops\n- Original manufacturer parts only\n- No aftermarket substitutions",
+      "category": "Products",
+      "tags": ["ev", "tesla", "electric", "battery", "charging"],
+      "question": "What's included in Tesla/EV coverage?",
+      "answer": "EV coverage includes: Battery Protection ($180/year) covering degradation and replacement up to $15,000; Charging Equipment coverage ($95/year) for home charging stations up to $2,500; EV-specific roadside assistance with mobile charging; and OEM Parts Guarantee ensuring Tesla-certified repairs with original parts only."
+    },
+    {
+      "id": "kb-coverage-territory",
+      "title": "Coverage Territory",
+      "excerpt": "Geographic coverage for auto and home policies.",
+      "fullContent": "Coverage Territory\n\nAUTO POLICIES:\n- Full coverage in all 50 US states\n- Full coverage in Canada\n- Mexico: Requires separate endorsement ($45/trip or $120/year)\n- Rental cars covered in US and Canada\n\nHOME POLICIES:\n- Property at stated address\n- Personal property worldwide (up to 10% of coverage)\n- Temporary living expenses if displaced\n\nTRAVEL CONSIDERATIONS:\n- Notify us for trips over 30 days\n- International rentals may need separate coverage\n- Roadside assistance available in US and Canada",
+      "category": "Coverage",
+      "tags": ["territory", "travel", "states", "canada", "mexico"],
+      "question": "Does auto coverage apply out of state?",
+      "answer": "Yes, SafeGuard auto policies provide full coverage across all 50 US states and Canada. For Mexico travel, a separate endorsement is required ($45/trip or $120/year). Rental cars are covered in US and Canada. For trips over 30 days, customers should notify us."
+    },
+    {
+      "id": "kb-additional-drivers",
+      "title": "Additional Driver Pricing",
+      "excerpt": "Cost to add additional drivers to auto policies.",
+      "fullContent": "Additional Driver Pricing\n\nSTANDARD RATES (per year):\n- Economy/Compact: $45/driver\n- Mid-size/Sedan: $60/driver\n- SUV/Truck: $72/driver\n- Luxury/Sports: $95/driver\n- Electric Vehicle: $84/driver\n\nSURCHARGES:\n- Under 25: +50%\n- SR-22 required: +75%\n- Recent accidents: +25-50%\n- Recent violations: +15-30%\n\nDISCOUNTS:\n- Bundle customers: 10% off driver fees\n- Good student: 15% off for under-25 drivers\n- Defensive driving course: 10% off",
+      "category": "Pricing",
+      "tags": ["drivers", "additional", "pricing", "rates"],
+      "question": "How much does it cost to add additional drivers?",
+      "answer": "Additional driver rates per year: Economy/Compact $45, Mid-size/Sedan $60, SUV/Truck $72, Luxury/Sports $95, Electric Vehicle $84. Surcharges apply for under-25 (+50%), SR-22 (+75%), accidents (+25-50%), violations (+15-30%). Bundle customers get 10% off driver fees. Good students under 25 get 15% off."
+    }
+  ],
+  "complianceRules": [
+    {
+      "id": "compliance-disclosure",
+      "type": "required",
+      "message": "Please read the following disclosure to the customer: \"This quote is valid for 30 days. Coverage begins upon receipt of first premium payment.\"",
+      "triggeredByMessageId": "msg-005"
+    }
+  ],
+  "postCall": {
+    "summary": "Customer initially called to cancel home insurance due to competitor pricing (Progressive at $1,200 vs our $1,450). Through loyalty discount and bundle opportunity, successfully retained customer and converted to a home + auto bundle sale. Customer added Tesla Model 3 and Honda Accord with EV protection package. Total annual savings of $434 for customer.",
+    "keyPoints": [
+      "Retention success - prevented cancellation",
+      "Applied 8-year loyalty discount (12% off)",
+      "Created home + 2 auto bundle",
+      "Added EV protection for Tesla Model 3",
+      "Customer saves $434/year vs previous setup",
+      "Email confirmation sent"
+    ],
+    "sentiment": "positive",
+    "disposition": "issue_resolved",
+    "recommendedFollowUp": "Flag for Q2 'Family Plan' promotion - customer expressed interest in adding drivers",
+    "actionsTaken": [
+      "Applied loyalty discount",
+      "Transferred to auto specialist",
+      "Added 2 vehicles to policy",
+      "Configured bundle with EV add-ons",
+      "Sent confirmation email"
+    ]
+  }
+}
