@@ -1,0 +1,455 @@
+{
+  "metadata": {
+    "id": "demo-001",
+    "name": "Lost Credit Card - Premium Customer",
+    "description": "Ananya Sharma reports her Gold credit card as lost and needs it blocked immediately. She also accepts an upgrade offer to Platinum.",
+    "version": "1.0",
+    "createdAt": "2024-01-15"
+  },
+  "customer": {
+    "id": "cust-78234",
+    "name": "Ananya Sharma",
+    "tier": "gold",
+    "accountType": "credit_card",
+    "accountNumber": "4532-XXXX-XXXX-8901",
+    "memberSince": "2019",
+    "phone": "+91 98765 43210",
+    "email": "ananya.sharma@email.com",
+    "preferredLanguage": "English"
+  },
+  "callHistory": [
+    {
+      "id": "call-001",
+      "date": "Dec 15, 2023",
+      "reason": "Credit limit increase request",
+      "outcome": "resolved",
+      "summary": "Customer requested credit limit increase from 2L to 5L. Approved based on excellent payment history.",
+      "agentName": "Rahul K.",
+      "duration": 420
+    },
+    {
+      "id": "call-002",
+      "date": "Oct 3, 2023",
+      "reason": "Reward points inquiry",
+      "outcome": "resolved",
+      "summary": "Customer inquired about reward points balance and redemption options. Explained current offers.",
+      "agentName": "Priya M.",
+      "duration": 180
+    },
+    {
+      "id": "call-003",
+      "date": "Aug 22, 2023",
+      "reason": "International transaction issue",
+      "outcome": "follow_up",
+      "summary": "Card declined during international trip. Enabled international transactions and advised about travel notification.",
+      "agentName": "Amit S.",
+      "duration": 540
+    }
+  ],
+  "prediction": {
+    "primaryReason": "Report lost or stolen card",
+    "confidence": 87,
+    "secondaryReasons": [
+      {
+        "reason": "Card replacement request",
+        "confidence": 45
+      },
+      {
+        "reason": "Fraudulent transaction report",
+        "confidence": 32
+      }
+    ]
+  },
+  "conversation": [
+    {
+      "id": "msg-001",
+      "timestamp": "10:32:15 AM",
+      "speaker": "agent",
+      "content": "Good morning! Thank you for calling Premium Card Services. My name is Alex. I can see you're calling about your Gold Credit Card ending in 8901. How may I assist you today, Ms. Sharma?",
+      "sentiment": "positive",
+      "triggers": [
+        {
+          "type": "update_workflow",
+          "targetId": "step-1"
+        }
+      ]
+    },
+    {
+      "id": "msg-002",
+      "timestamp": "10:32:28 AM",
+      "speaker": "customer",
+      "content": "Hi Alex. I'm really worried right now. I think I lost my credit card somewhere. I had it this morning but I can't find it anywhere. I need to block it immediately!",
+      "sentiment": "negative",
+      "triggers": [
+        {
+          "type": "show_action",
+          "targetId": "action-block-card"
+        },
+        {
+          "type": "show_knowledge",
+          "targetId": "kb-lost-card"
+        }
+      ]
+    },
+    {
+      "id": "msg-003",
+      "timestamp": "10:32:45 AM",
+      "speaker": "agent",
+      "content": "I completely understand your concern, Ms. Sharma. Don't worry, I'll help you secure your account right away. For your protection, I'm going to block your card immediately. This will prevent any unauthorized transactions.",
+      "sentiment": "positive"
+    },
+    {
+      "id": "msg-004",
+      "timestamp": "10:32:58 AM",
+      "speaker": "customer",
+      "content": "Yes, please do that quickly! I'm so worried someone might use it.",
+      "sentiment": "negative"
+    },
+    {
+      "id": "msg-005",
+      "timestamp": "10:33:15 AM",
+      "speaker": "agent",
+      "content": "I've successfully blocked your Gold Credit Card ending in 8901. Your card is now inactive and cannot be used for any transactions. I can confirm there have been no suspicious transactions on your account in the last 24 hours.",
+      "sentiment": "positive",
+      "triggers": [
+        {
+          "type": "complete_action",
+          "targetId": "action-block-card"
+        },
+        {
+          "type": "update_workflow",
+          "targetId": "step-2"
+        },
+        {
+          "type": "show_action",
+          "targetId": "action-order-replacement"
+        }
+      ]
+    },
+    {
+      "id": "msg-006",
+      "timestamp": "10:33:32 AM",
+      "speaker": "customer",
+      "content": "Oh thank goodness! That's such a relief. What happens now? Will I get a replacement card?",
+      "sentiment": "positive"
+    },
+    {
+      "id": "msg-007",
+      "timestamp": "10:33:48 AM",
+      "speaker": "agent",
+      "content": "Absolutely! As a valued Gold member, I can arrange for a replacement card to be sent to your registered address. We have two delivery options: standard delivery in 5-7 business days, or express delivery within 24-48 hours for a small fee of Rs. 199. Which would you prefer?",
+      "sentiment": "positive",
+      "triggers": [
+        {
+          "type": "show_knowledge",
+          "targetId": "kb-delivery-options"
+        }
+      ]
+    },
+    {
+      "id": "msg-008",
+      "timestamp": "10:34:05 AM",
+      "speaker": "customer",
+      "content": "I'll take the express delivery please. I really need the card soon as I have some important payments coming up.",
+      "sentiment": "neutral"
+    },
+    {
+      "id": "msg-009",
+      "timestamp": "10:34:22 AM",
+      "speaker": "agent",
+      "content": "Perfect! I've initiated express delivery for your replacement Gold Card. It will arrive at your registered address within 24-48 hours. The Rs. 199 fee will be added to your next billing statement.",
+      "sentiment": "positive",
+      "triggers": [
+        {
+          "type": "complete_action",
+          "targetId": "action-order-replacement"
+        },
+        {
+          "type": "update_workflow",
+          "targetId": "step-3"
+        }
+      ]
+    },
+    {
+      "id": "msg-010",
+      "timestamp": "10:34:40 AM",
+      "speaker": "agent",
+      "content": "Ms. Sharma, while I have you on the line, I noticed you've been a loyal Gold member with excellent payment history since 2019. I'd like to offer you a complimentary upgrade to our Platinum Card. It includes higher credit limits, premium airport lounge access, and 2x reward points on all purchases. Would you be interested?",
+      "sentiment": "positive",
+      "triggers": [
+        {
+          "type": "show_action",
+          "targetId": "action-upgrade-offer"
+        },
+        {
+          "type": "show_knowledge",
+          "targetId": "kb-platinum-benefits"
+        }
+      ]
+    },
+    {
+      "id": "msg-011",
+      "timestamp": "10:35:02 AM",
+      "speaker": "customer",
+      "content": "Oh that sounds interesting! Is there any additional annual fee for the Platinum card?",
+      "sentiment": "neutral"
+    },
+    {
+      "id": "msg-012",
+      "timestamp": "10:35:18 AM",
+      "speaker": "agent",
+      "content": "Great question! Since this is a special upgrade offer for valued customers like yourself, the first year's annual fee of Rs. 2,999 is completely waived. From the second year, you can waive the fee by spending Rs. 3 lakhs annually, which I see you typically exceed based on your transaction history.",
+      "sentiment": "positive"
+    },
+    {
+      "id": "msg-013",
+      "timestamp": "10:35:38 AM",
+      "speaker": "customer",
+      "content": "That sounds like a great deal! Yes, please upgrade me to Platinum. Will my replacement card be a Platinum card then?",
+      "sentiment": "positive"
+    },
+    {
+      "id": "msg-014",
+      "timestamp": "10:35:55 AM",
+      "speaker": "agent",
+      "content": "Wonderful choice, Ms. Sharma! Yes, your replacement card will now be a Platinum Card with all the premium benefits. I'm processing the upgrade now.",
+      "sentiment": "positive",
+      "triggers": [
+        {
+          "type": "complete_action",
+          "targetId": "action-upgrade-offer"
+        },
+        {
+          "type": "update_workflow",
+          "targetId": "step-4"
+        },
+        {
+          "type": "show_compliance",
+          "targetId": "compliance-reference"
+        }
+      ]
+    },
+    {
+      "id": "msg-015",
+      "timestamp": "10:36:12 AM",
+      "speaker": "agent",
+      "content": "Your upgrade is complete! Your new Platinum Card ending will arrive within 24-48 hours. Your reference number for this call is REF-2024-78234-PC. Is there anything else I can help you with today?",
+      "sentiment": "positive",
+      "triggers": [
+        {
+          "type": "update_workflow",
+          "targetId": "step-5"
+        }
+      ]
+    },
+    {
+      "id": "msg-016",
+      "timestamp": "10:36:32 AM",
+      "speaker": "customer",
+      "content": "No, that's everything. Thank you so much for your quick help, Alex. I really appreciate it!",
+      "sentiment": "positive"
+    },
+    {
+      "id": "msg-017",
+      "timestamp": "10:36:45 AM",
+      "speaker": "agent",
+      "content": "You're very welcome, Ms. Sharma! Thank you for being a valued customer. If you have any questions about your new Platinum Card benefits, please don't hesitate to call us. Have a wonderful day!",
+      "sentiment": "positive"
+    }
+  ],
+  "workflow": {
+    "id": "wf-lost-card",
+    "name": "Lost Card Process",
+    "steps": [
+      {
+        "id": "step-1",
+        "title": "Verify Customer Identity",
+        "description": "Confirm customer details and account information",
+        "status": "pending"
+      },
+      {
+        "id": "step-2",
+        "title": "Block Lost Card",
+        "description": "Immediately disable the lost card to prevent unauthorized use",
+        "status": "pending"
+      },
+      {
+        "id": "step-3",
+        "title": "Order Replacement",
+        "description": "Initiate replacement card with selected delivery option",
+        "status": "pending"
+      },
+      {
+        "id": "step-4",
+        "title": "Process Upgrade (Optional)",
+        "description": "If customer accepts, process card tier upgrade",
+        "status": "pending"
+      },
+      {
+        "id": "step-5",
+        "title": "Provide Reference Number",
+        "description": "Give customer a reference number for their records",
+        "status": "pending"
+      }
+    ]
+  },
+  "actions": [
+    {
+      "id": "action-block-card",
+      "type": "button",
+      "title": "Block Card Immediately",
+      "description": "Block the lost Gold Credit Card ending in 8901",
+      "icon": "shield",
+      "priority": "high",
+      "prefilledData": {
+        "cardNumber": "****8901",
+        "cardType": "Gold Credit Card",
+        "reason": "Lost Card"
+      },
+      "formFields": [
+        {
+          "id": "cardNumber",
+          "label": "Card Number",
+          "type": "text",
+          "disabled": true
+        },
+        {
+          "id": "cardType",
+          "label": "Card Type",
+          "type": "text",
+          "disabled": true
+        },
+        {
+          "id": "reason",
+          "label": "Block Reason",
+          "type": "text",
+          "disabled": true
+        }
+      ]
+    },
+    {
+      "id": "action-order-replacement",
+      "type": "form",
+      "title": "Order Replacement Card",
+      "description": "Send new card to customer's registered address",
+      "icon": "credit-card",
+      "priority": "medium",
+      "prefilledData": {
+        "deliveryType": "Express (24-48 hrs)",
+        "address": "42 MG Road, Bengaluru 560001",
+        "fee": "Rs. 199"
+      },
+      "formFields": [
+        {
+          "id": "deliveryType",
+          "label": "Delivery Type",
+          "type": "select",
+          "options": ["Standard (5-7 days)", "Express (24-48 hrs)"]
+        },
+        {
+          "id": "address",
+          "label": "Delivery Address",
+          "type": "text"
+        },
+        {
+          "id": "fee",
+          "label": "Delivery Fee",
+          "type": "text",
+          "disabled": true
+        }
+      ]
+    },
+    {
+      "id": "action-upgrade-offer",
+      "type": "confirmation",
+      "title": "Platinum Card Upgrade",
+      "description": "Upgrade customer from Gold to Platinum tier",
+      "icon": "gift",
+      "priority": "low",
+      "prefilledData": {
+        "currentTier": "Gold",
+        "newTier": "Platinum",
+        "firstYearFee": "Waived",
+        "creditLimit": "Rs. 8,00,000"
+      },
+      "formFields": [
+        {
+          "id": "currentTier",
+          "label": "Current Tier",
+          "type": "text",
+          "disabled": true
+        },
+        {
+          "id": "newTier",
+          "label": "New Tier",
+          "type": "text",
+          "disabled": true
+        },
+        {
+          "id": "firstYearFee",
+          "label": "First Year Fee",
+          "type": "text",
+          "disabled": true
+        },
+        {
+          "id": "creditLimit",
+          "label": "New Credit Limit",
+          "type": "text",
+          "disabled": true
+        }
+      ]
+    }
+  ],
+  "knowledge": [
+    {
+      "id": "kb-lost-card",
+      "title": "Lost/Stolen Card Procedure",
+      "excerpt": "Immediate steps to secure customer account when card is reported lost or stolen.",
+      "fullContent": "Lost/Stolen Card Procedure\n\n1. IMMEDIATE ACTIONS:\n- Block the card immediately in the system\n- Verify no unauthorized transactions in last 24-48 hours\n- Reassure customer their liability is limited\n\n2. CUSTOMER COMMUNICATION:\n- Inform customer the card is now blocked\n- Explain replacement card options\n- Provide reference number for records\n\n3. REPLACEMENT OPTIONS:\n- Standard delivery: 5-7 business days (free)\n- Express delivery: 24-48 hours (Rs. 199 for Gold, free for Platinum)\n\n4. FRAUD PROTECTION:\n- Zero liability policy for unauthorized transactions\n- Report any suspicious activity to fraud team\n- Customer will receive SMS alert for all transactions",
+      "category": "Card Services",
+      "tags": ["lost card", "stolen card", "block card", "security"]
+    },
+    {
+      "id": "kb-delivery-options",
+      "title": "Card Delivery Options",
+      "excerpt": "Standard and express delivery options for replacement cards.",
+      "fullContent": "Card Delivery Options\n\nSTANDARD DELIVERY:\n- Timeline: 5-7 business days\n- Cost: Free for all card tiers\n- Tracking: SMS updates provided\n\nEXPRESS DELIVERY:\n- Timeline: 24-48 hours\n- Cost by tier:\n  * Standard: Rs. 299\n  * Gold: Rs. 199\n  * Platinum: Free\n- Tracking: Real-time tracking link provided\n\nADDRESS VERIFICATION:\n- Confirm registered address before dispatch\n- Alternate address requires additional verification\n- PO Box delivery not available",
+      "category": "Delivery",
+      "tags": ["delivery", "replacement", "shipping"]
+    },
+    {
+      "id": "kb-platinum-benefits",
+      "title": "Platinum Card Benefits",
+      "excerpt": "Complete list of Platinum tier benefits and features.",
+      "fullContent": "Platinum Card Benefits\n\nREWARDS:\n- 2x reward points on all purchases\n- 5x points on travel and dining\n- Points never expire\n\nTRAVEL BENEFITS:\n- Complimentary airport lounge access (8 visits/year)\n- Travel insurance up to Rs. 50 lakhs\n- No foreign transaction fees\n\nLIFESTYLE:\n- Concierge service 24/7\n- Golf privileges at partner courses\n- Premium dining discounts\n\nCREDIT FEATURES:\n- Higher credit limit (up to Rs. 10 lakhs)\n- Lower interest rate (1.49% vs 1.99%)\n- Extended interest-free period (50 days)\n\nANNUAL FEE:\n- Rs. 2,999/year\n- Waived on Rs. 3 lakh annual spend",
+      "category": "Products",
+      "tags": ["platinum", "benefits", "upgrade", "premium"]
+    }
+  ],
+  "complianceRules": [
+    {
+      "id": "compliance-reference",
+      "type": "reminder",
+      "message": "Please provide the customer with the reference number REF-2024-78234-PC for their records. This is required for all card block and replacement requests.",
+      "triggeredByMessageId": "msg-014"
+    }
+  ],
+  "postCall": {
+    "summary": "Customer reported lost Gold Credit Card. Card was blocked immediately with no fraudulent transactions detected. Customer opted for express delivery replacement and accepted complimentary upgrade to Platinum tier. All required reference numbers were provided.",
+    "keyPoints": [
+      "Lost Gold Card blocked successfully (****8901)",
+      "No unauthorized transactions detected",
+      "Express replacement ordered (24-48 hours)",
+      "Platinum upgrade accepted (first year fee waived)",
+      "Reference number provided: REF-2024-78234-PC"
+    ],
+    "sentiment": "positive",
+    "disposition": "issue_resolved",
+    "recommendedFollowUp": "Send welcome email with Platinum benefits guide within 24 hours",
+    "actionsTaken": [
+      "Blocked lost credit card",
+      "Ordered express replacement",
+      "Processed Platinum upgrade"
+    ]
+  }
+}
